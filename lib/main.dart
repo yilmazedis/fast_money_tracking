@@ -1,17 +1,19 @@
 import 'package:fast_money_tracking/controllers/item_controller.dart';
 import 'package:fast_money_tracking/pages/analysis_pages/analysis_page.dart';
-import 'package:fast_money_tracking/pages/add_edit_pages/add_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'models/item.dart';
 
 void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
 
-  Get.put(ItemController());
+  final itemController = Get.put(ItemController());
+
+  generateAndAddItems(itemController, 40);
 
   runApp(const MyApp());
 }

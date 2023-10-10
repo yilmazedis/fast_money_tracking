@@ -1,3 +1,4 @@
+import 'package:fast_money_tracking/pages/analysis_pages/report_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -8,7 +9,6 @@ import '../../models/item.dart';
 import '../../utils/constants.dart';
 import '../../utils/getx_storage.dart';
 import '../../widgets/classes/app_bar.dart';
-import '../../widgets/classes/category_item.dart';
 import '../../widgets/classes/drop_down_box.dart';
 import '../add_edit_pages/add_page.dart';
 
@@ -188,12 +188,106 @@ class ShowDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dateTime = timelineDates[type] ?? DateTime(2000);
+    final dateTime = timelineDates[selectedDate] ?? DateTime(2000);
     Map<String, double> todaySums = calculateFinalMoneyResult(controller.items, dateTime, DateTime.now());
 
     final typeValue = todaySums[type.toLowerCase()] ?? 0;
     final balance = todaySums["balance"] ?? 0;
 
-    return Obx(() => ShowMoneyFrame(type.value, typeValue, balance));
+    final itemGroup = groupItemsByCategoryAndType(type.value.toLowerCase(), controller.items);
+    return Column(
+      children: [
+        Obx(() => ShowMoneyFrame(type.value, typeValue, balance)),
+        const SizedBox(height: 20,),
+        Obx(() => GenerateCategoryDetails(itemGroup: itemGroup, type: type.value,))
+      ],
+    );
+  }
+}
+
+class GenerateCategoryDetails extends StatelessWidget {
+
+  final Map<int, List<Item>> itemGroup;
+  final String type;
+
+  const GenerateCategoryDetails({required this.itemGroup, required this.type, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+        children: List.generate(itemGroup.keys.length, (index) {
+          final items = itemGroup.values.elementAt(index);
+
+          final totalAmount = calculateTotalAmount(items);
+
+          return GestureDetector (
+            onTap: () {
+              Get.to(() => ReportPage(items: items));
+            },
+            child: CategoryDetails(type: type,
+                category: itemGroup.keys.elementAt(index),
+                amount: totalAmount),
+          );
+        },
+        )
+    );
+  }
+}
+
+class CategoryDetails extends StatelessWidget {
+  final String type;
+  final int category;
+  final double amount;
+  const CategoryDetails({required this.type, required this.category, required this.amount, super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+        color: white,
+        elevation: 3,
+        shape:
+        RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Icon(
+                categoryItems[category].data,
+                color:type == 'Income'
+                    ? green
+                    : red,
+                size: 23,
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 15, right: 10),
+                  child: Text(
+                    categoryItems[category].text,
+                    style: const TextStyle(fontSize: 20),
+                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.start,
+                  ),
+                ),
+              ),
+              // attention: This widget will never overflow
+              Flexible(
+                flex: 0,
+                child: Text(
+                  '${format(amount)} $currency',
+                  style: GoogleFonts.aBeeZee(fontSize: 20),
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.end,
+                ),
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              const Icon(
+                Icons.arrow_forward_ios,
+                size: 18,
+              ),
+            ],
+          ),
+        ));
   }
 }

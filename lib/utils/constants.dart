@@ -59,7 +59,7 @@ final Map<String, DateTime> timelineDates = {
   'This month': startOfThisMonth,
   'This quarter': startOfThisQuarter,
   'This year': startOfThisYear,
-  'All': DateTime(2000), // You can set this to null or another default value as needed
+  'All': DateTime(2000),
 };
 
 String dateFormat = 'dd/MM/yyyy';

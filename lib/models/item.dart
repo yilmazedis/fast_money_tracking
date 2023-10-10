@@ -1,10 +1,14 @@
+import 'dart:math';
 import 'dart:ui';
+
+import '../controllers/item_controller.dart';
+import '../widgets/classes/category_item.dart';
 
 class Item {
   int id;
   String type;
   double amount;
-  String category;
+  int category;
   String description;
   String date;
   String time;
@@ -70,6 +74,45 @@ Map<String, double> calculateFinalMoneyResult(List<Item> items, DateTime startDa
   };
 }
 
+Map<int, List<Item>> groupItemsByCategoryAndType(String type, List<Item> items) {
+  Map<int, List<Item>> groupedItems = {};
+  for (var item in items) {
+    if (type != item.type) { continue; }
+    if (!groupedItems.containsKey(item.category)) {
+      groupedItems[item.category] = [];
+    }
+    groupedItems[item.category]!.add(item);
+  }
+
+  return groupedItems;
+}
+
+double calculateTotalAmount(List<Item> items) {
+  double totalAmount = 0;
+  for (var item in items) {
+    totalAmount += item.amount;
+  }
+  return totalAmount;
+}
+void generateAndAddItems(ItemController itemController, int itemCount) {
+  List<Item> items = [];
+  print("generateAndAddItems");
+  for (int i = 1; i <= itemCount; i++) {
+    Item item = Item(
+      id: i,
+      type: i % 2 == 0 ? "income" : "expense",
+      amount: Random().nextDouble() * 100,
+      category: Random().nextInt(9) + 1,
+      description: "Item $i Description",
+      date: "2023-0${Random().nextInt(8) + 1}-0${Random().nextInt(8) + 1}",
+      time: "${Random().nextInt(24)}:${Random().nextInt(60)}",
+    );
+    items.add(item);
+  }
+
+  itemController.addAll(items);
+}
+
 // double calculateSum(List<Item> items, DateTime startDate, DateTime endDate) {
 //   double sum = 0.0;
 //   for (var item in items) {
@@ -80,3 +123,4 @@ Map<String, double> calculateFinalMoneyResult(List<Item> items, DateTime startDa
 //   }
 //   return sum;
 // }
+
