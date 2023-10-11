@@ -49,7 +49,7 @@ class AmountCard extends StatelessWidget {
               decoration: InputDecoration(
                 hintText: '0',
                 hintStyle: GoogleFonts.aBeeZee(
-                    color: Colors.red,
+                    color: mainColor,
                     fontSize: 35,
                     fontWeight: FontWeight.bold),
                 icon: Padding(

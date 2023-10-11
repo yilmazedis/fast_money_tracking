@@ -1,7 +1,6 @@
 import 'package:fast_money_tracking/pages/analysis_pages/report_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import '../../controllers/item_controller.dart';
@@ -21,6 +20,7 @@ class AnalysisPage extends StatelessWidget {
 
   Widget build(BuildContext context) {
     ListView listViewChild(String type) {
+      // Type From
       final RxString rxType = type.obs;
       return ListView(
         children: [
@@ -50,7 +50,7 @@ class AnalysisPage extends StatelessWidget {
                 }
               });
             },
-            tooltip: 'Increment',
+            tooltip: 'Add',
             child: const Icon(Icons.add),
           )),
     );
@@ -130,7 +130,7 @@ class DateDisplay extends StatelessWidget {
 class ShowMoneyFrame extends StatelessWidget {
   final String type;
   final double typeValue, balance;
-  const ShowMoneyFrame(this.type, this.typeValue, this.balance);
+  const ShowMoneyFrame(this.type, this.typeValue, this.balance, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -140,7 +140,7 @@ class ShowMoneyFrame extends StatelessWidget {
         children: [
           Text(
             getTranslated(context, typeName),
-            style: TextStyle(fontSize: 22),
+            style: const TextStyle(fontSize: 22),
           ),
           Expanded(
             child: Text(
@@ -175,7 +175,7 @@ class ShowMoneyFrame extends StatelessWidget {
             const SizedBox(
               height: 12.5,
             ),
-            rowFrame('Balance', balance)
+            rowFrame(getTranslated(context, 'Balance'), balance)
           ],
         ),
       ),
@@ -198,14 +198,14 @@ class ShowDetails extends StatelessWidget {
     Map<String, double> todaySums = calculateFinalMoneyResult(filteredItems);
 
     final typeValue = todaySums[type.toLowerCase()] ?? 0;
-    final balance = todaySums["balance"] ?? 0;
+    final balance = todaySums[ItemType.balance] ?? 0;
 
     final itemGroup = groupItemsByCategoryAndType(type.toLowerCase(), filteredItems);
     return Column(
       children: [
         ShowMoneyFrame(type, typeValue, balance),
         const SizedBox(height: 20,),
-        GenerateCategoryDetails(itemGroup: itemGroup, type: type,)
+        GenerateCategoryDetails(itemGroup: itemGroup, type: type.toLowerCase(),)
       ],
     );
   }
@@ -247,6 +247,7 @@ class CategoryDetails extends StatelessWidget {
   const CategoryDetails({required this.type, required this.category, required this.amount, super.key});
   @override
   Widget build(BuildContext context) {
+    print(type);
     return Card(
         color: white,
         elevation: 3,
@@ -259,7 +260,7 @@ class CategoryDetails extends StatelessWidget {
             children: [
               Icon(
                 categoryItems[category].data,
-                color:type == 'Income'
+                color : type == ItemType.income
                     ? green
                     : red,
                 size: 23,

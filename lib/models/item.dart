@@ -1,11 +1,8 @@
 import 'dart:math';
-import 'dart:ui';
-
 import 'package:fast_money_tracking/utils/extensions/string_ext.dart';
 import 'package:intl/intl.dart';
-
 import '../controllers/item_controller.dart';
-import '../widgets/classes/category_item.dart';
+import '../utils/constants.dart';
 
 class Item {
   String id;
@@ -69,18 +66,18 @@ Map<String, double> calculateFinalMoneyResult(List<Item> items) {
   double balance = 0.0;
 
   for (var item in items) {
-    if (item.type == "income") {
+    if (item.type == ItemType.income) {
       incomeSum += item.amount;
-    } else if (item.type == "expense") {
-      expenseSum -= item.amount; // Expenses are represented as negative values
+    } else if (item.type == ItemType.expense) {
+      expenseSum -= item.amount;
     }
     balance += item.amount;
   }
 
   return {
-    "income": incomeSum,
-    "expense": expenseSum,
-    "balance": balance
+    ItemType.income: incomeSum,
+    ItemType.expense: expenseSum,
+    ItemType.balance: balance
   };
 }
 
@@ -109,7 +106,7 @@ void generateAndAddItems(ItemController itemController, int itemCount) {
   for (int i = 1; i <= itemCount; i++) {
     Item item = Item(
       id: EnhancedString.uuid(),
-      type: i % 2 == 0 ? "income" : "expense",
+      type: i % 2 == 0 ? ItemType.income : ItemType.expense,
       amount: Random().nextDouble() * 100,
       category: Random().nextInt(9) + 1,
       description: "Item $i Description",

@@ -79,7 +79,7 @@ class ItemDetails extends StatelessWidget {
               OneLine(
                 iconData: Icons.calendar_month,
                 type: item.type,
-                iconText: "Date",
+                iconText: getTranslated(context, 'Date'),
                 text: item.date,
               ),
               const SizedBox(
@@ -114,7 +114,7 @@ class OneLine extends StatelessWidget {
     return Row(children: [
       Icon(
         iconData,
-        color: type == 'income' ? green : red,
+        color: type == ItemType.income ? green : red,
         size: 23,
       ),
       Expanded(

@@ -39,6 +39,7 @@ void chooseDate(BuildContext context, Rx<DateTime> dateTime) {
 
 void chooseTime(BuildContext context, Rx<TimeOfDay> selectedTime) {
    showTimePicker(
+    initialEntryMode: TimePickerEntryMode.input,
     context: context,
     initialTime: selectedTime.value,
   ).then((value) {

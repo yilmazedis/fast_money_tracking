@@ -64,7 +64,7 @@ class AddEditPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color mainColor = type == 'Income' ? green : red;
+    Color mainColor = type.toLowerCase() == ItemType.income ? green : red;
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
