@@ -1,4 +1,7 @@
+import 'dart:io' show Platform;
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../localization/methods.dart';
 import '../../utils/constants.dart';
@@ -36,6 +39,9 @@ class AmountCard extends StatelessWidget {
               maxLines: null,
               minLines: 1,
               cursorColor: mainColor,
+              keyboardType: Platform.isIOS ? const TextInputType.numberWithOptions(decimal: true, signed: true)
+                    : TextInputType.number,
+                inputFormatters: [NumberWithDecimalFormatter()],
               style: GoogleFonts.aBeeZee(
                   color: mainColor,
                   fontSize: 35,
@@ -43,11 +49,11 @@ class AmountCard extends StatelessWidget {
               decoration: InputDecoration(
                 hintText: '0',
                 hintStyle: GoogleFonts.aBeeZee(
-                    color: mainColor,
+                    color: Colors.red,
                     fontSize: 35,
                     fontWeight: FontWeight.bold),
                 icon: Padding(
-                  padding: EdgeInsets.only(right: 5),
+                  padding: const EdgeInsets.only(right: 5),
                   child: Icon(
                     Icons.currency_lira,
                     size: 45,
@@ -69,6 +75,20 @@ class AmountCard extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class NumberWithDecimalFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
+    // Remove any characters that are not digits or a decimal point
+    final cleanText = newValue.text.replaceAll(RegExp(r'[^\d.]'), '');
+
+    return TextEditingValue(
+      text: cleanText,
+      selection: TextSelection.collapsed(offset: cleanText.length),
     );
   }
 }

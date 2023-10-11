@@ -38,6 +38,7 @@ class ReportPage extends StatelessWidget {
                         if (result['item'] != null) {
                           controller.edit(result['item']);
                         } else {
+                          print("Deleted Item");
                           controller.deleteById(item.id);
                         }
                         Get.back();
@@ -113,7 +114,7 @@ class OneLine extends StatelessWidget {
     return Row(children: [
       Icon(
         iconData,
-        color: type == 'Income' ? green : red,
+        color: type == 'income' ? green : red,
         size: 23,
       ),
       Expanded(

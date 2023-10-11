@@ -12,22 +12,16 @@ class DescriptionCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(children: [
       Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8.5),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8.5),
         child: TextFormField(
           controller: controller,
-          maxLines: null,
+          maxLines: 4,
           minLines: 1,
           keyboardType: TextInputType.multiline,
           keyboardAppearance: Brightness.light,
-          // maxLength: ,
-          onTap: () {
-            // if (_pc.isPanelOpen) {
-            //   _pc.close();
-            // }
-          },
+          maxLength: 200,
           cursorColor: blue1,
           textCapitalization: TextCapitalization.sentences,
-          style: TextStyle(fontSize: 20),
           textInputAction: TextInputAction.newline,
           decoration: InputDecoration(
               border: InputBorder.none,
@@ -38,7 +32,7 @@ class DescriptionCard extends StatelessWidget {
               ),
               suffixIcon: controller.text.isNotEmpty
                   ? IconButton(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.clear,
                     size: 20,
                   ),
@@ -46,7 +40,7 @@ class DescriptionCard extends StatelessWidget {
                     controller.clear();
                   })
                   : const SizedBox(),
-              icon: Padding(
+              icon: const Padding(
                 padding: EdgeInsets.only(right: 15),
                 child: Icon(
                   Icons.description_outlined,

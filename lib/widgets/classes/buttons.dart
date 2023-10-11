@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import '../../localization/methods.dart';
 import '../../utils/constants.dart';
+import 'dart:io' show Platform;
+
+import 'alert_dialog.dart';
 
 class SaveButton extends StatelessWidget {
   final void Function()? action;
@@ -38,10 +41,19 @@ class DeleteButton extends StatelessWidget {
   final void Function()? action;
   const DeleteButton({required this.action, super.key});
 
+  void deleteFunction(context, onDeletion) async {
+    Platform.isIOS
+        ? await iosDialog(
+        context,
+        'Are you sure you want to delete this category?', 'Delete',
+        onDeletion)
+        : await androidDialog(context,  'Are you sure you want to delete this category?', 'Delete', onDeletion);
+  }
+
   @override
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
-        onPressed: action,
+        onPressed: () async => deleteFunction(context, action),
         style: ElevatedButton.styleFrom(
             foregroundColor: red,
             backgroundColor: white,
