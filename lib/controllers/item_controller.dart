@@ -3,24 +3,37 @@ import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import '../models/item.dart';
 
 class ItemController extends GetxController {
-  final RxList<Item> _items = RxList<Item>();
+  final _items = Rx<List<Item>>([]);
 
-  RxList<Item> get items => _items;
+  Rx<List<Item>> get items => _items;
 
   void add(Item item) {
-    _items.add(item);
+    _items.value.add(item);
+    _items.refresh();
   }
 
   void addAll(List<Item> items) {
-    _items.clear();
-    _items.addAll(items);
+    _items.value.addAll(items);
+  }
+
+  void edit(Item item) {
+    final index = _items.value.indexWhere((existingItem) => existingItem.id == item.id);
+    if (index != -1) {
+      _items.value[index] = item;
+      _items.refresh();
+    }
+  }
+
+  void deleteById(String id) {
+    _items.value.removeWhere((item) => item.id == id);
+    _items.refresh();
   }
 
   void clear() {
-    _items.clear();
+    _items.value.clear();
   }
 
   int get length {
-    return _items.length;
+    return _items.value.length;
   }
 }

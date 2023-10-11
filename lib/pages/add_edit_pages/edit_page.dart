@@ -8,11 +8,9 @@ import 'add_edit_page.dart';
 
 class EditPage extends StatelessWidget {
   static final _formKey3 = GlobalKey<FormState>(debugLabel: '_formKey3');
-  final Item inputModel;
-  final IconData categoryIcon;
+  final Item item;
   const EditPage({super.key,
-    required this.inputModel,
-    required this.categoryIcon,
+    required this.item,
   });
   @override
   Widget build(BuildContext context) {
@@ -28,9 +26,9 @@ class EditPage extends StatelessWidget {
           },
           child: AddEditPage(
             formKey: _formKey3,
-            inputModel: inputModel,
-            categoryIcon: categoryIcon,
-            type: inputModel.type,
+            item: item,
+            type: item.type,
+            isEdit: true,
           )
       ),
     );

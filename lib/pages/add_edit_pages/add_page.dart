@@ -23,14 +23,14 @@ class AddInput extends StatelessWidget {
               AddEditPage(
                 type: 'Expense',
                 formKey: _formKey2,
-                categoryIcon: null,
-                inputModel: null,
+                item: null,
+                isEdit: false,
               ),
               AddEditPage(
                 type: 'Income',
                 formKey: _formKey1,
-                categoryIcon: null,
-                inputModel: null,
+                item: null,
+                isEdit: false,
               )
             ],
           ),

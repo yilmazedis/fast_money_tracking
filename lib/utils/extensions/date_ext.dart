@@ -3,7 +3,13 @@ import 'package:intl/intl.dart';
 
 extension EnhancedDate on DateTime {
   // Formatter
-  String dateFormat() => DateFormat("dd/MM/yyyy").format(this);
+  String dateFormat() => DateFormat("dd-MM-yyyy").format(this);
+
+  String dateFormatWithTime() => DateFormat("dd-MM-yyyy HH:mm").format(this);
+
+  DateTime addTimeOfDay({required TimeOfDay timeOfDay}) {
+    return DateTime(year, month, day, timeOfDay.hour, timeOfDay.minute);
+  }
 }
 
 extension EnhancedTimeOfDay on TimeOfDay {

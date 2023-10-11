@@ -6,6 +6,9 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'models/item.dart';
 
+// Edit
+// Enhance report ui
+
 void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();

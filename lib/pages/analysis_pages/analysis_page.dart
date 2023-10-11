@@ -1,6 +1,7 @@
 import 'package:fast_money_tracking/pages/analysis_pages/report_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import '../../controllers/item_controller.dart';
@@ -16,13 +17,15 @@ class AnalysisPage extends StatelessWidget {
   AnalysisPage({super.key});
 
   final dateStr = (getString(AppStorageKey.selectedDate) ?? "Today").obs;
+  final ItemController controller = Get.find();
 
   Widget build(BuildContext context) {
     ListView listViewChild(String type) {
+      final RxString rxType = type.obs;
       return ListView(
         children: [
           ShowDate(selectedDate: dateStr),
-          ShowDetails(RxString(type), dateStr),
+          Obx(() => ShowDetails(type: rxType.value, selectedDate: dateStr.value, items: controller.items.value,)),
         ],
       );
     }
@@ -40,9 +43,11 @@ class AnalysisPage extends StatelessWidget {
           ),
           floatingActionButton: FloatingActionButton(
             onPressed: () {
-              Get.to(() => AddInput(),
-                  arguments: {"state": "Add", "index": -1})?.then((result) {
-                // print("Result is " + result[0]["status"]);
+              Get.to(() => AddInput(), arguments: {"state": "Add", "index": -1})
+                  ?.then((result) {
+                if (result != null && result['item'] != null) {
+                  controller.add(result['item']);
+                }
               });
             },
             tooltip: 'Increment',
@@ -179,27 +184,28 @@ class ShowMoneyFrame extends StatelessWidget {
 }
 
 class ShowDetails extends StatelessWidget {
+  final String type;
+  final String selectedDate;
+  final List<Item> items;
 
-  final RxString type;
-  final RxString selectedDate;
-  ShowDetails(this.type, this.selectedDate);
-
-  final ItemController controller = Get.find();
+  const ShowDetails({required this.type, required this.selectedDate, required this.items, super.key});
 
   @override
   Widget build(BuildContext context) {
     final dateTime = timelineDates[selectedDate] ?? DateTime(2000);
-    Map<String, double> todaySums = calculateFinalMoneyResult(controller.items, dateTime, DateTime.now());
+
+    final filteredItems = getItemsBetweenDates(items, dateTime, DateTime.now());
+    Map<String, double> todaySums = calculateFinalMoneyResult(filteredItems);
 
     final typeValue = todaySums[type.toLowerCase()] ?? 0;
     final balance = todaySums["balance"] ?? 0;
 
-    final itemGroup = groupItemsByCategoryAndType(type.value.toLowerCase(), controller.items);
+    final itemGroup = groupItemsByCategoryAndType(type.toLowerCase(), filteredItems);
     return Column(
       children: [
-        Obx(() => ShowMoneyFrame(type.value, typeValue, balance)),
+        ShowMoneyFrame(type, typeValue, balance),
         const SizedBox(height: 20,),
-        Obx(() => GenerateCategoryDetails(itemGroup: itemGroup, type: type.value,))
+        GenerateCategoryDetails(itemGroup: itemGroup, type: type,)
       ],
     );
   }
