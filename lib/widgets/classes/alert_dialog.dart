@@ -67,12 +67,12 @@ Future<void> androidDialog(BuildContext context, String content, String action,
               TextButton(
                   onPressed: () {
                     Get.back();
-                    onAction();
                   },
                   child: Text(getTranslated(context, 'Cancel'))),
               TextButton(
                   onPressed: () {
                     Get.back();
+                    onAction();
                   },
                   child: Text(getTranslated(context, action)))
             ],
