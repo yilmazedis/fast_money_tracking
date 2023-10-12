@@ -71,6 +71,7 @@ final Map<String, DateTime> timelineDates = {
 String dateFormat = 'dd/MM/yyyy';
 
 DateFormat dateTimeFormat = DateFormat("dd-MM-yyyy HH:mm");
+DateFormat timeFormat = DateFormat("HH:mm");
 
 String format(double number) =>
     NumberFormat("#,###,###,###,###,###.##", "en_US").format(number);

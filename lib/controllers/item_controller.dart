@@ -31,6 +31,7 @@ class ItemController extends GetxController {
 
   void clear() {
     _items.value.clear();
+    _items.refresh();
   }
 
   int get length {

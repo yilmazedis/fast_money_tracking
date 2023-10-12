@@ -52,7 +52,8 @@ List<Item> getItemsBetweenDates(List<Item> items, DateTime startDate, DateTime e
 
   for (var item in items) {
     DateTime itemDate = customFormat.parse(item.date); // Assuming 'date' is a valid date string in your Item class
-    if (itemDate.isAfter(startDate) && itemDate.isBefore(endDate)) {
+    if (itemDate.isAfter(startDate) &&
+        itemDate.isBefore(endDate.add(const Duration(days: 1)))) {
       newItems.add(item);
     }
   }
@@ -110,7 +111,8 @@ void generateAndAddItems(ItemController itemController, int itemCount) {
       amount: Random().nextDouble() * 100,
       category: Random().nextInt(9) + 1,
       description: "Item $i Description",
-      date: generateRandomDate()
+      date: "12-10-2023 11:11"
+      //date: generateRandomDate()
     );
     items.add(item);
   }

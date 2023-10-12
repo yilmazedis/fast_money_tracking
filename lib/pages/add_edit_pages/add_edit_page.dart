@@ -39,6 +39,7 @@ class AddEditPage extends StatelessWidget {
       categoryItemIndex.value = item.category;
       descriptionTextController.text = item.description;
       dateTime.value = dateTimeFormat.parse(item.date);
+      selectedTime.value = TimeOfDay.fromDateTime(dateTime.value);
     }
   }
 

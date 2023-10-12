@@ -1,5 +1,6 @@
 import 'package:fast_money_tracking/controllers/item_controller.dart';
 import 'package:fast_money_tracking/pages/analysis_pages/analysis_page.dart';
+import 'package:fast_money_tracking/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
         Locale('en'), // English
         Locale('tr'), // Turkish
       ],
-      home: AnalysisPage(),
+      home: const HomePage(),
     );
   }
 }
