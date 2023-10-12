@@ -272,7 +272,7 @@ class CategoryDetails extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(left: 15, right: 10),
                   child: Text(
-                    categoryItems[category].text,
+                    getTranslated(context, categoryItems[category].text),
                     style: const TextStyle(fontSize: 20),
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.start,

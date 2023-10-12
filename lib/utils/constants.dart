@@ -28,7 +28,7 @@ class ItemType {
 }
 
 List<CategoryItem> categoryItems = [
-  CategoryItem(data: Icons.fastfood, text: "Fast Food"),
+  CategoryItem(data: Icons.fastfood, text: "Food & Beverages"),
   CategoryItem(data: Icons.shopping_cart, text: "Shopping"),
   CategoryItem(data: Icons.home, text: "Home"),
   CategoryItem(data: Icons.local_gas_station, text: "Gas"),

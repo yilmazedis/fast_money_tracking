@@ -17,7 +17,7 @@
   "Parking": "Otopark",
   "Services & Maintenance": "Hizmetler ve Bakım",
   "Taxi": "Taksi",
-  "Shopping": "Alışveriş yapmak",
+  "Shopping": "Alışveriş",
   "Accessories": "Aksesuarlar",
   "Electronic Devices": "Elektronik aletler",
   "Clothes": "Giysi",
@@ -42,7 +42,7 @@
   "Doctor": "Doktor",
   "Health Insurance": "Sağlık Sigortası",
   "Medicine": "İlaç",
-  "Sports": "Spor Dalları",
+  "Sports": "Spor",
   "Home": "Ev",
   "Furnishings": "Mobilyalar",
   "Home Services": "Ev Hizmetleri",
@@ -101,7 +101,7 @@
   "Please fill a category name": "Lütfen bir kategori adı girin",
   "Delete": "Sil",
   "Total Year Amount": "Toplam Yıl Tutarı",
-  "Report": "Bildiri",
+  "Report": "Rapor",
   "Hi you": "Merhaba Dostum",
   "All": "Tümü",
   "Category already exists": "Kategori zaten var",
@@ -139,5 +139,6 @@
   "Select a date format": "Bir tarih formatı seçin",
   "Date format": "Tarih formatı",
   "Date format has been updated": "Tarih formatı güncellendi",
-  "Date": "Tarih"
+  "Date": "Tarih",
+  "Gas": "Gaz"
 }

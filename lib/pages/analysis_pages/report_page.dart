@@ -121,7 +121,7 @@ class OneLine extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.only(left: 15, right: 10),
           child: Text(
-            iconText,
+            getTranslated(context, iconText),
             style: const TextStyle(fontSize: 20),
             overflow: TextOverflow.ellipsis,
             textAlign: TextAlign.start,
@@ -131,7 +131,7 @@ class OneLine extends StatelessWidget {
       Flexible(
         flex: 0,
         child: Text(
-          text,
+          getTranslated(context, text),
           style: GoogleFonts.aBeeZee(fontSize: 20),
           overflow: TextOverflow.ellipsis,
           textAlign: TextAlign.end,

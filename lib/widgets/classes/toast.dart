@@ -1,3 +1,4 @@
+import 'package:fast_money_tracking/localization/methods.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/constants.dart';
@@ -6,14 +7,15 @@ import 'category_item.dart';
 
 void toast(BuildContext context, String message) {
   ScaffoldMessenger.of(context).showSnackBar(
-     SnackBar(
+    SnackBar(
       content: Row(
         children: [
           const Icon(Icons.check, color: Colors.blue),
           const SizedBox(width: 12),
           Text(
             message,
-            style: const TextStyle(fontWeight: FontWeight.w500, color: Colors.black),
+            style: const TextStyle(
+                fontWeight: FontWeight.w500, color: Colors.black),
           ),
         ],
       ),
@@ -23,7 +25,8 @@ void toast(BuildContext context, String message) {
   );
 }
 
-Future<int> showIcons(BuildContext context, Color mainColor, int defaultIndex) async {
+Future<int> showIcons(
+    BuildContext context, Color mainColor, int defaultIndex) async {
   return await showDialog(
       context: context,
       builder: (context) {
@@ -49,11 +52,14 @@ Future<int> showIcons(BuildContext context, Color mainColor, int defaultIndex) a
                     padding: const EdgeInsets.all(4.0),
                     mainAxisSpacing: 4.0,
                     crossAxisSpacing: 4.0,
-                    children:
-                    List.generate(categoryItems.length, (index) {
+                    children: List.generate(categoryItems.length, (index) {
                       final data = categoryItems[index].data;
+                      final text =
+                          getTranslated(context, categoryItems[index].text);
                       return GridTile(
-                          child: IconButton(
+                          child: Column(
+                        children: [
+                          IconButton(
                             icon: Icon(
                               data,
                               size: 30.0,
@@ -62,15 +68,22 @@ Future<int> showIcons(BuildContext context, Color mainColor, int defaultIndex) a
                             onPressed: () {
                               Navigator.of(context).pop(index);
                             },
-                          ));
+                          ),
+                          Text(
+                            text,
+                            overflow: TextOverflow.fade,
+                            maxLines: 1,
+                            softWrap: false,
+                          )
+                        ],
+                      ));
                     })),
               ),
-            )
-        );
+            ));
       }).then((value) {
-        if (value == null) {
-          return defaultIndex;
-        }
-        return value;
-      });
+    if (value == null) {
+      return defaultIndex;
+    }
+    return value;
+  });
 }
