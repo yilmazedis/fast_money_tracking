@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../controllers/item_controller.dart';
 import '../../localization/methods.dart';
+import '../../managers/sqflite_services.dart';
 import '../../models/item.dart';
 import '../../utils/constants.dart';
 import '../../utils/getx_storage.dart';
@@ -37,8 +38,10 @@ class ReportPage extends StatelessWidget {
 
                         if (result['item'] != null) {
                           controller.edit(result['item']);
+                          DB.update(result['item']);
                         } else {
                           print("Deleted Item");
+                          DB.delete(item.id);
                           controller.deleteById(item.id);
                         }
                         Get.back();

@@ -51,7 +51,6 @@ class AddEditPage extends StatelessWidget {
         description: descriptionTextController.text,
         date: dateTime.value.addTimeOfDay(timeOfDay: selectedTime.value)
             .dateFormatWithTime());
-
     Get.back(result: {
       'item': item,
     });

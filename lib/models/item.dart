@@ -72,8 +72,9 @@ Map<String, double> calculateFinalMoneyResult(List<Item> items) {
     } else if (item.type == ItemType.expense) {
       expenseSum -= item.amount;
     }
-    balance += item.amount;
   }
+
+  balance = (incomeSum + expenseSum).abs();
 
   return {
     ItemType.income: incomeSum,

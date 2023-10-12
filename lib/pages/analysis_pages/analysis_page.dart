@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import '../../controllers/item_controller.dart';
 import '../../localization/methods.dart';
+import '../../managers/sqflite_services.dart';
 import '../../models/item.dart';
 import '../../utils/constants.dart';
 import '../../utils/getx_storage.dart';
@@ -47,6 +48,7 @@ class AnalysisPage extends StatelessWidget {
               Get.to(() => AddInput(), arguments: {"state": "Add", "index": -1})
                   ?.then((result) {
                 if (result != null && result['item'] != null) {
+                  DB.insert(result['item']);
                   controller.add(result['item']);
                 }
               });

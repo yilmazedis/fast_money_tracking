@@ -6,6 +6,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'localization/app_localization.dart';
+import 'managers/sqflite_services.dart';
 import 'models/item.dart';
 
 // Edit
@@ -18,7 +19,15 @@ void main() async {
 
   final itemController = Get.put(ItemController());
 
-  generateAndAddItems(itemController, 40);
+  DB.init().then((_) {
+    DB.inputModelList().then((items) {
+      final ItemController controller = Get.find();
+      controller.addAll(items);
+    });
+  });
+
+
+  //generateAndAddItems(itemController, 40);
 
   runApp(const MyApp());
 }
