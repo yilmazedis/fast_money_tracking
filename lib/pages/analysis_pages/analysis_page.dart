@@ -204,8 +204,6 @@ class ShowDetails extends StatelessWidget {
     final balance = todaySums[ItemType.balance] ?? 0;
 
     final itemGroup = groupItemsByCategoryAndType(type.toLowerCase(), filteredItems);
-    print(filteredItems.length);
-    print(itemGroup.length);
     return Column(
       children: [
         ShowMoneyFrame(type, typeValue, balance),
@@ -225,7 +223,6 @@ class GenerateCategoryDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(type);
     return Column(
         children: List.generate(itemGroup.keys.length, (index) {
           final items = itemGroup.values.elementAt(index);

@@ -3,6 +3,7 @@ import 'package:fast_money_tracking/pages/calendar_pages/widgets/transaction_eve
 import 'package:fast_money_tracking/pages/calendar_pages/widgets/transaction_events.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import '../../controllers/item_controller.dart';
 import '../../localization/methods.dart';
 import '../../models/item.dart';
@@ -75,13 +76,12 @@ class _CalendarBodyState extends State<CalendarBody> {
     final items = widget.items;
     if (widget.items.isNotEmpty) {
       for (int i = 0; i < items.length; i++) {
-        String description = items[i].description;
         Item map1 = Item(
             id: items[i].id,
             type: items[i].type,
             amount: items[i].amount,
             category: items[i].category,
-            description: description,
+            description: items[i].description,
             date: items[i].date);
 
         void updateMapValue<K, V>(Map<K, List<V>> map, K key, V value) => map
@@ -89,12 +89,12 @@ class _CalendarBodyState extends State<CalendarBody> {
 
         updateMapValue(
           map,
-          items[i].date,
+          items[i].date.split(" ").first,
           map1,
         );
       }
       transactions = map.map(
-          (key, value) => MapEntry(dateTimeFormat.parse(key), value));
+          (key, value) => MapEntry(DateFormat("dd-MM-yyyy").parse(key), value));
     }
 
     late LinkedHashMap linkedHashedMapTransactions =
@@ -234,11 +234,12 @@ class _CalendarBodyState extends State<CalendarBody> {
         },
         pageJumpingEnabled: true,
       ),
-      SizedBox(height: 8.0),
+      const SizedBox(height: 8.0),
       Expanded(
         child: ValueListenableBuilder<List<Item>>(
           valueListenable: _selectedEvents,
           builder: (context, value, _) {
+            print(value.length);
             return Column(children: [
               Balance(items: value),
               Expanded(child: TransactionEvents(transactions: value))
