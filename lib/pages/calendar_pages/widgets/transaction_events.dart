@@ -6,7 +6,7 @@ import '../../../localization/methods.dart';
 import '../../../models/item.dart';
 import '../../../utils/constants.dart';
 import '../../../utils/getx_storage.dart';
-import '../../analysis_pages/report_page.dart';
+import '../../report_page/report_page.dart';
 
 class TransactionEvents extends StatelessWidget {
 
