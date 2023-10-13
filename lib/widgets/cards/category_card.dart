@@ -52,10 +52,10 @@ class CategoryCard extends StatelessWidget {
               ],
             ),
           ),
-          Divider(
+          const Divider(
             height: 0,
             thickness: 0.25,
-            color: grey,
+            color: AppColor.grey,
             indent: 85,
           ),
         ])));

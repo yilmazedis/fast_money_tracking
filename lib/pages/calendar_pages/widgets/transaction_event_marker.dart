@@ -22,7 +22,7 @@ class TransactionEventMarker extends StatelessWidget {
         child: Text(
           '${events.length}',
           style: const TextStyle().copyWith(
-            color: white,
+            color: AppColor.white,
             fontSize: 13.0,
           ),
         ),

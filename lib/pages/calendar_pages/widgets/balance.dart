@@ -64,7 +64,7 @@ class Balance extends StatelessWidget {
             ),
             Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5),
-                child: summaryFrame('EXPENSE', expense, red)),
+                child: summaryFrame('EXPENSE', expense, AppColor.red)),
             Flexible(
                 child: summaryFrame('TOTAL BALANCE', balance, Colors.black)),
           ],

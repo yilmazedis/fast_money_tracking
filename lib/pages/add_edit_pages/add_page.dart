@@ -16,7 +16,7 @@ class AddInput extends StatelessWidget {
         initialIndex: 0,
         length: 2,
         child: Scaffold(
-          backgroundColor: blue1,
+          backgroundColor: AppColor.blue1,
           appBar: const InExAppBar(isInputPage: true,),
           body: TabBarView(
             children: [

@@ -2,19 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../widgets/classes/category_item.dart';
 
-Color green = const Color.fromRGBO(57, 157, 3, 1),
-    red = const Color.fromRGBO(217, 89, 89, 1),
-    white = const Color.fromRGBO(255, 255, 255, 1),
-    blue1 = const Color.fromRGBO(210, 234, 251, 1),
-    blue2 = const Color.fromRGBO(139, 205, 254, 1),
-    blue3 = const Color.fromRGBO(89, 176, 222, 1),
-    blue4 = const Color.fromRGBO(82, 179, 252, 1),
-    grey = Colors.grey;
-
-class AppColors {
+class AppColor {
   static const Color color60 = Color(0xFFFFFFFF);
   static const Color color30 = Color(0xFF912676);
   static const Color color10 = Color(0xFF016CFF);
+  static const Color green = Color.fromRGBO(57, 157, 3, 1);
+  static const Color red = Color.fromRGBO(217, 89, 89, 1);
+  static const Color white = Color.fromRGBO(255, 255, 255, 1);
+  static const Color blue1 = Color.fromRGBO(210, 234, 251, 1);
+  static const Color blue2 = Color.fromRGBO(139, 205, 254, 1);
+  static const Color blue3 = Color.fromRGBO(89, 176, 222, 1);
+  static const Color blue4 = Color.fromRGBO(82, 179, 252, 1);
+  static const Color grey = Colors.grey;
 }
 
 class AppStorageKey {

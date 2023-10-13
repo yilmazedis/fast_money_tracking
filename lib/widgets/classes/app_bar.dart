@@ -12,7 +12,7 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: blue3,
+      backgroundColor: AppColor.blue3,
       title: Text(title, style: const TextStyle(fontSize: 21)),
     );
   }
@@ -35,34 +35,25 @@ class InExAppBar extends StatelessWidget implements PreferredSizeWidget {
         decoration: const BoxDecoration(),
         child: Align(
             child: Text(
-              getTranslated(context, title)!,
-              style: TextStyle(fontSize: 19),
+              getTranslated(context, title),
+              style: const TextStyle(fontSize: 19),
             )),
       ),
     );
     return AppBar(
-      backgroundColor: blue2,
+      backgroundColor: AppColor.blue2,
       title: TabBar(
-        unselectedLabelColor: white,
+        unselectedLabelColor: AppColor.white,
         indicatorSize: TabBarIndicatorSize.tab,
         indicator: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
-          color: blue4,
+          color: AppColor.blue4,
         ),
         tabs: [
           appBarTab('EXPENSE'),
           appBarTab('INCOME')
         ],
       ),
-      // actions: isInputPage ? [
-      //   IconButton(
-      //     icon: const Icon(Icons.check),
-      //     iconSize: 28,
-      //     onPressed: () {
-      //       // saveInputFunc(context,true);
-      //     },
-      //   )
-      // ] : null,
     );
   }
 }
@@ -78,7 +69,7 @@ class CategoryAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: blue3,
+      backgroundColor: AppColor.blue3,
       actions: [
         Padding(
           padding: const EdgeInsets.only(
@@ -95,18 +86,17 @@ class CategoryAppBar extends StatelessWidget implements PreferredSizeWidget {
                 Icons.edit,
                 size: 19,
               ),
-              SizedBox(width: 3),
+              const SizedBox(width: 3),
               Text(
                 getTranslated(context, 'Edit'),
-                style: TextStyle(fontSize: 19),
+                style: const TextStyle(fontSize: 19),
               ),
             ]),
           ),
-          // child: Icon(Icons.edit),
         ),
       ],
-      title: Text(getTranslated(context, 'Category')!,
-          style: TextStyle(fontSize: 21)),
+      title: Text(getTranslated(context, 'Category'),
+          style: const TextStyle(fontSize: 21)),
     );
   }
 }
@@ -122,7 +112,7 @@ class EditCategoryAppBar extends StatelessWidget implements PreferredSizeWidget 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: blue3,
+      backgroundColor: AppColor.blue3,
       actions: [
         Padding(
           padding: EdgeInsets.only(right: 5),
@@ -131,13 +121,13 @@ class EditCategoryAppBar extends StatelessWidget implements PreferredSizeWidget 
                 MaterialPageRoute(builder: (context) => addCategory)),
             child: Text(
               getTranslated(context, 'Add'),
-              style: TextStyle(fontSize: 18.5,  color: white),
+              style: TextStyle(fontSize: 18.5,  color: AppColor.white),
             ),
           ),
         ),
       ],
       title: Text(getTranslated(context, 'Edit Category'),
-          style: TextStyle(fontSize: 21)),
+          style: const TextStyle(fontSize: 21)),
     );
   }
 }

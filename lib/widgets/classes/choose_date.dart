@@ -17,12 +17,12 @@ void chooseDate(BuildContext context, Rx<DateTime> dateTime) {
       return Theme(
         data: Theme.of(context).copyWith(
           dialogTheme: DialogTheme(shape: appShapeBorder()),
-          colorScheme: ColorScheme.light(primary: blue2),
+          colorScheme: const ColorScheme.light(primary: AppColor.blue2),
           buttonTheme: const ButtonThemeData(textTheme: ButtonTextTheme.accent),
           textButtonTheme: TextButtonThemeData(
             style: TextButton.styleFrom(
               foregroundColor: Colors.black,
-              backgroundColor: blue2,
+              backgroundColor: AppColor.blue2,
               textStyle: GoogleFonts.aBeeZee(),
             ),
           ),

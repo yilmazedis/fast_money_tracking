@@ -46,10 +46,10 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       bottomNavigationBar: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           boxShadow: [
             BoxShadow(
-              color: grey,
+              color: AppColor.grey,
             ),
           ],
         ),
@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage> {
           iconSize: 27,
           selectedFontSize: 16,
           unselectedFontSize: 14,
-          backgroundColor: white,
+          backgroundColor: AppColor.white,
           selectedItemColor: Colors.amber[800],
           unselectedItemColor: Colors.black87,
           type: BottomNavigationBarType.fixed,

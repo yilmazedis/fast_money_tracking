@@ -19,7 +19,7 @@ class DropDownBox extends StatelessWidget {
     return DecoratedBox(
       decoration: ShapeDecoration(
         shadows: const [BoxShadow()],
-        color: blue2,
+        color: AppColor.blue2,
         shape: appShapeBorder(radius: 15),
       ),
       child: SizedBox(
@@ -28,7 +28,7 @@ class DropDownBox extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: DropdownButtonHideUnderline(
             child: Obx(() =>  DropdownButton<String>(
-              dropdownColor: blue2,
+              dropdownColor: AppColor.blue2,
               value: selectedDate.value,
               elevation: 10,
               icon: const Icon(

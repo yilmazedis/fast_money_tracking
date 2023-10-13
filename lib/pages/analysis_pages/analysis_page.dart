@@ -36,7 +36,7 @@ class AnalysisPage extends StatelessWidget {
       initialIndex: 0,
       length: 2,
       child: Scaffold(
-          backgroundColor: blue1,
+          backgroundColor: AppColor.blue1,
           appBar: const InExAppBar(
             isInputPage: false,
           ),
@@ -167,7 +167,7 @@ class ShowMoneyFrame extends StatelessWidget {
           color: const Color.fromRGBO(239, 247, 253, 1),
           borderRadius: BorderRadius.circular(40),
           border: Border.all(
-            color: grey,
+            color: AppColor.grey,
             width: 0.4,
           )),
       child: Padding(
@@ -251,7 +251,7 @@ class CategoryDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-        color: white,
+        color: AppColor.white,
         elevation: 3,
         shape:
         RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
@@ -263,8 +263,8 @@ class CategoryDetails extends StatelessWidget {
               Icon(
                 categoryItems[category].data,
                 color : type == ItemType.income
-                    ? green
-                    : red,
+                    ? AppColor.green
+                    : AppColor.red,
                 size: 23,
               ),
               Expanded(

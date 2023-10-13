@@ -14,11 +14,11 @@ class AmountCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-          color: white,
+      decoration: const BoxDecoration(
+          color: AppColor.white,
           border: Border(
               bottom: BorderSide(
-                color: grey,
+                color: AppColor.grey,
                 width: 0.6,
               ))),
       child: Padding(

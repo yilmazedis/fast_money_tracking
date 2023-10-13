@@ -20,7 +20,7 @@ class DescriptionCard extends StatelessWidget {
           keyboardType: TextInputType.multiline,
           keyboardAppearance: Brightness.light,
           maxLength: 200,
-          cursorColor: blue1,
+          cursorColor: AppColor.blue1,
           textCapitalization: TextCapitalization.sentences,
           textInputAction: TextInputAction.newline,
           decoration: InputDecoration(
@@ -50,10 +50,10 @@ class DescriptionCard extends StatelessWidget {
               )),
         ),
       ),
-      Divider(
+      const Divider(
         height: 0,
         thickness: 0.25,
-        color: grey,
+        color: AppColor.grey,
         indent: 85,
       )
     ]);

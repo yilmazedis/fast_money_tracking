@@ -15,7 +15,7 @@ class EditPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: blue1,
+      backgroundColor: AppColor.blue1,
       appBar: BasicAppBar(title: getTranslated(context, 'Edit')),
       body: GestureDetector(
           onTap: () {

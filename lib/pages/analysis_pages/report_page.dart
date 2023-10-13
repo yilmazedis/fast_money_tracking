@@ -19,7 +19,7 @@ class ReportPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: blue1,
+      backgroundColor: AppColor.blue1,
       appBar: BasicAppBar(title: getTranslated(context, 'Report')),
       body: SingleChildScrollView(
         child: Padding(
@@ -65,7 +65,7 @@ class ItemDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-        color: white,
+        color: AppColor.white,
         elevation: 3,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         child: Padding(
@@ -117,7 +117,7 @@ class OneLine extends StatelessWidget {
     return Row(children: [
       Icon(
         iconData,
-        color: type == ItemType.income ? green : red,
+        color: type == ItemType.income ? AppColor.green : AppColor.red,
         size: 23,
       ),
       Expanded(

@@ -32,7 +32,6 @@ class AddEditPage extends StatelessWidget {
 
   initItem(Item? item) {
     if (item != null) {
-
       id = item.id;
       type = item.type;
       amountTextController.text = item.amount.toString();
@@ -64,7 +63,7 @@ class AddEditPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color mainColor = type.toLowerCase() == ItemType.income ? green : red;
+    Color mainColor = type.toLowerCase() == ItemType.income ? AppColor.green : AppColor.red;
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -76,9 +75,9 @@ class AddEditPage extends StatelessWidget {
         ),
         Container(
           decoration: BoxDecoration(
-              color: white,
+              color: AppColor.white,
               border: Border.all(
-                color: grey,
+                color: AppColor.grey,
                 width: 0.6,
               )),
           child: Column(

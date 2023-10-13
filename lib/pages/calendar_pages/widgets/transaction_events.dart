@@ -24,7 +24,7 @@ class TransactionEvents extends StatelessWidget {
         itemCount: transactions.length,
         itemBuilder: (context, index) {
           colorCategory =
-          transactions[index].type == ItemType.income ? Colors.lightGreen : red;
+          transactions[index].type == ItemType.income ? Colors.lightGreen : AppColor.red;
           return GestureDetector(
             onTap: () {
               Get.to(() => ReportPage(items: [transactions[index]]));
@@ -32,7 +32,7 @@ class TransactionEvents extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                  color: white,
+                  color: AppColor.white,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 15, vertical: 15),
@@ -91,11 +91,11 @@ class TransactionEvents extends StatelessWidget {
                     ),
                   ),
                 ),
-                Divider(
+                const Divider(
                   height: 0,
                   thickness: 0.25,
                   indent: 20,
-                  color: grey,
+                  color: AppColor.grey,
                 ),
               ],
             ),

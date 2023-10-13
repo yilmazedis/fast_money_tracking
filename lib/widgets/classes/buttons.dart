@@ -14,11 +14,11 @@ class SaveButton extends StatelessWidget {
       child: ElevatedButton.icon(
         onPressed: action,
         style: ElevatedButton.styleFrom(
-          foregroundColor: white,
+          foregroundColor: AppColor.white,
           backgroundColor: const Color.fromRGBO(236, 158, 66, 1),
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-          disabledForegroundColor: grey.withOpacity(0.38),
-          disabledBackgroundColor: grey.withOpacity(0.12),
+          disabledForegroundColor: AppColor.grey.withOpacity(0.38),
+          disabledBackgroundColor: AppColor.grey.withOpacity(0.12),
           elevation: 10,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(18.0),
@@ -55,13 +55,13 @@ class DeleteButton extends StatelessWidget {
     return ElevatedButton.icon(
         onPressed: () async => deleteFunction(context, action),
         style: ElevatedButton.styleFrom(
-            foregroundColor: red,
-            backgroundColor: white,
+            foregroundColor: AppColor.red,
+            backgroundColor: AppColor.white,
             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-            disabledForegroundColor: grey.withOpacity(0.38),
-            disabledBackgroundColor: grey.withOpacity(0.12),
-            side: BorderSide(
-              color: red,
+            disabledForegroundColor: AppColor.grey.withOpacity(0.38),
+            disabledBackgroundColor: AppColor.grey.withOpacity(0.12),
+            side: const BorderSide(
+              color: AppColor.red,
               width: 2,
             ),
             elevation: 10,

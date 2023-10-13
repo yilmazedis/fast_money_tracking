@@ -20,7 +20,7 @@ class CalendarPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: blue1,
+        backgroundColor: AppColor.blue1,
         appBar: BasicAppBar(title: getTranslated(context, 'Calendar')),
         body: Obx(() => CalendarBody(items: controller.items.value)));
   }
@@ -179,7 +179,7 @@ class _CalendarBodyState extends State<CalendarBody> {
           formatButtonTextStyle: const TextStyle(fontSize: 18),
           formatButtonDecoration: BoxDecoration(
               boxShadow: const [BoxShadow()],
-              color: blue2,
+              color: AppColor.blue2,
               borderRadius: BorderRadius.circular(25)),
         ),
         calendarBuilders: CalendarBuilders(
@@ -187,8 +187,8 @@ class _CalendarBodyState extends State<CalendarBody> {
             return Container(
               //see difference between margin and padding below: Margin: Out (for itself), padding: In (for its child)
               // margin: EdgeInsets.all(4.0.w),
-              padding: EdgeInsets.only(top: 6.0, left: 6.0),
-              color: Color.fromRGBO(255, 168, 68, 1),
+              padding: const EdgeInsets.only(top: 6.0, left: 6.0),
+              color: const Color.fromRGBO(255, 168, 68, 1),
               width: 46,
               height: 46,
               child: Text(
@@ -200,7 +200,7 @@ class _CalendarBodyState extends State<CalendarBody> {
           todayBuilder: (context, date, _) {
             return Container(
               padding: const EdgeInsets.only(top: 6.0, left: 6.0),
-              color: blue2,
+              color: AppColor.blue2,
               width: 46,
               height: 46,
               child: Text(
