@@ -14,6 +14,7 @@ class ItemController extends GetxController {
 
   void addAll(List<Item> items) {
     _items.value.addAll(items);
+    _items.refresh();
   }
 
   void edit(Item item) {

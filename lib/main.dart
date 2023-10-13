@@ -1,5 +1,4 @@
 import 'package:fast_money_tracking/controllers/item_controller.dart';
-import 'package:fast_money_tracking/pages/analysis_pages/analysis_page.dart';
 import 'package:fast_money_tracking/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -7,10 +6,6 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'localization/app_localization.dart';
 import 'managers/sqflite_services.dart';
-import 'models/item.dart';
-
-// Edit
-// Enhance report ui
 
 void main() async {
 
@@ -23,13 +18,10 @@ void main() async {
     DB.inputModelList().then((items) {
       final ItemController controller = Get.find();
       controller.addAll(items);
+      runApp(const MyApp());
     });
   });
-
-
   //generateAndAddItems(itemController, 40);
-
-  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
