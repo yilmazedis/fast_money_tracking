@@ -58,6 +58,35 @@ class InExAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 }
 
+class CalendarAppBar extends StatelessWidget implements PreferredSizeWidget {
+  final void Function()? action;
+  const CalendarAppBar({required this.action, super.key});
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      backgroundColor: AppColor.blue3,
+      actions: [
+        Padding(
+          padding: const EdgeInsets.only(right: 5),
+          child: TextButton(
+            onPressed: action,
+            child: Text(
+              getTranslated(context, 'Today'),
+              style: const TextStyle(fontSize: 18.5,  color: AppColor.white),
+            ),
+          ),
+        ),
+      ],
+      title: Text(getTranslated(context, 'Calendar'),
+          style: const TextStyle(fontSize: 21)),
+    );
+  }
+}
+
 
 class CategoryAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget editCategory;
