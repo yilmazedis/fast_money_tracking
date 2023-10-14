@@ -1,7 +1,10 @@
+import 'package:fast_money_tracking/localization/methods.dart';
 import 'package:fast_money_tracking/utils/extensions/date_ext.dart';
 import 'package:fast_money_tracking/utils/extensions/string_ext.dart';
+import 'package:fast_money_tracking/widgets/classes/toast.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../models/item.dart';
 import '../../utils/constants.dart';
 import '../../widgets/cards/amount_card.dart';
@@ -43,6 +46,11 @@ class AddEditPage extends StatelessWidget {
   }
 
   void saveAction() {
+    if (amountTextController.text.isEmpty) {
+      showSnackbar("Uyarı!", "Miktar alanı dolu olmalı!", SnackbarType.warning);
+      return;
+    }
+
     Item item = Item(id: id,
         type: type.toLowerCase(),
         amount: double.tryParse(amountTextController.text) ?? 0,

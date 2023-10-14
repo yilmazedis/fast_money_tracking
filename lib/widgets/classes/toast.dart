@@ -1,26 +1,39 @@
 import 'package:fast_money_tracking/localization/methods.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../utils/constants.dart';
 import 'app_traits.dart';
-import 'category_item.dart';
 
-void toast(BuildContext context, String message) {
-  ScaffoldMessenger.of(context).showSnackBar(
-    SnackBar(
-      content: Row(
-        children: [
-          const Icon(Icons.check, color: Colors.blue),
-          const SizedBox(width: 12),
-          Text(
-            message,
-            style: const TextStyle(
-                fontWeight: FontWeight.w500, color: Colors.black),
-          ),
-        ],
-      ),
-      backgroundColor: AppColor.white2,
-      duration: const Duration(seconds: 2),
+enum SnackbarType { error, warning, success }
+
+void showSnackbar(String title, String message, SnackbarType type) {
+  IconData iconData;
+  Color iconColor;
+
+  switch (type) {
+    case SnackbarType.error:
+      iconData = Icons.error;
+      iconColor = AppColor.red;
+      break;
+    case SnackbarType.warning:
+      iconData = Icons.warning;
+      iconColor = AppColor.orange;
+      break;
+    case SnackbarType.success:
+      iconData = Icons.check;
+      iconColor = AppColor.blue1;
+      break;
+  }
+
+  Get.snackbar(
+    title,
+    message,
+    snackPosition: SnackPosition.BOTTOM,
+    backgroundColor: AppColor.white2,
+    icon: Icon(
+      iconData,
+      color: iconColor,
     ),
   );
 }
