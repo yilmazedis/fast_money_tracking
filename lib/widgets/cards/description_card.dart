@@ -24,7 +24,9 @@ class DescriptionCard extends StatelessWidget {
           textCapitalization: TextCapitalization.sentences,
           textInputAction: TextInputAction.newline,
           decoration: InputDecoration(
-              border: InputBorder.none,
+              border: const OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10.0)),
+              ),
               hintText: getTranslated(context, 'Description'),
               hintStyle: GoogleFonts.cousine(
                 fontSize: 22,
