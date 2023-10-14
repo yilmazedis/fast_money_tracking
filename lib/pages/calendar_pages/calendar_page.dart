@@ -188,7 +188,7 @@ class _CalendarBodyState extends State<CalendarBody> {
               //see difference between margin and padding below: Margin: Out (for itself), padding: In (for its child)
               // margin: EdgeInsets.all(4.0.w),
               padding: const EdgeInsets.only(top: 6.0, left: 6.0),
-              color: const Color.fromRGBO(255, 168, 68, 1),
+              color: AppColor.orange2,
               width: 46,
               height: 46,
               child: Text(

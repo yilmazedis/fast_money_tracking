@@ -39,7 +39,7 @@ class ShowMoneyFrame extends StatelessWidget {
 
     return Container(
       decoration: BoxDecoration(
-          color: const Color.fromRGBO(239, 247, 253, 1),
+          color: AppColor.white2,
           borderRadius: BorderRadius.circular(40),
           border: Border.all(
             color: AppColor.grey,

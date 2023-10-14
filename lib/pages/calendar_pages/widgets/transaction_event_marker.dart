@@ -14,7 +14,7 @@ class TransactionEventMarker extends StatelessWidget {
       duration: const Duration(milliseconds: 300),
       decoration: const BoxDecoration(
         shape: BoxShape.rectangle,
-        color: Color.fromRGBO(67, 125, 229, 1),
+        color: AppColor.blue5,
       ),
       width: width,
       height: 18.0,

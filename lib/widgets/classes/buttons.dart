@@ -15,7 +15,7 @@ class SaveButton extends StatelessWidget {
         onPressed: action,
         style: ElevatedButton.styleFrom(
           foregroundColor: AppColor.white,
-          backgroundColor: const Color.fromRGBO(236, 158, 66, 1),
+          backgroundColor: AppColor.orange,
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
           disabledForegroundColor: AppColor.grey.withOpacity(0.38),
           disabledBackgroundColor: AppColor.grey.withOpacity(0.12),

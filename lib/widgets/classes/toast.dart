@@ -19,7 +19,7 @@ void toast(BuildContext context, String message) {
           ),
         ],
       ),
-      backgroundColor: const Color.fromRGBO(239, 247, 253, 1),
+      backgroundColor: AppColor.white2,
       duration: const Duration(seconds: 2),
     ),
   );

@@ -23,7 +23,7 @@ class ShowDate extends StatelessWidget {
             const Icon(
               Icons.calendar_today,
               size: 27,
-              color: Color.fromRGBO(82, 179, 252, 1),
+              color: AppColor.blue4,
             ),
             const SizedBox(
               width: 10,
