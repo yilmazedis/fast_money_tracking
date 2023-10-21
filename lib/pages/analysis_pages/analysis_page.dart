@@ -38,7 +38,7 @@ class AnalysisPage extends StatelessWidget {
             isInputPage: false,
           ),
           body: TabBarView(
-            children: [listViewChild('Expense'), listViewChild('Income')],
+            children: [listViewChild('Income'), listViewChild('Expense')],
           ),
           floatingActionButton: FloatingActionButton(
             onPressed: () {

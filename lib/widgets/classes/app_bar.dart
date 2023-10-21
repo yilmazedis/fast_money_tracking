@@ -50,8 +50,8 @@ class InExAppBar extends StatelessWidget implements PreferredSizeWidget {
           color: AppColor.blue4,
         ),
         tabs: [
+          appBarTab('INCOME'),
           appBarTab('EXPENSE'),
-          appBarTab('INCOME')
         ],
       ),
     );

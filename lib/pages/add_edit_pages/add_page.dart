@@ -21,17 +21,17 @@ class AddInput extends StatelessWidget {
           body: TabBarView(
             children: [
               AddEditPage(
+                type: 'Income',
+                formKey: _formKey1,
+                item: null,
+                isEdit: false,
+              ),
+              AddEditPage(
                 type: 'Expense',
                 formKey: _formKey2,
                 item: null,
                 isEdit: false,
               ),
-              AddEditPage(
-                type: 'Income',
-                formKey: _formKey1,
-                item: null,
-                isEdit: false,
-              )
             ],
           ),
         ));

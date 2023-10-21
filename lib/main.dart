@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       title: 'Fast Money Tracking',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
         useMaterial3: true,
       ),
       //home: const HomePage(title: 'Fast Money Tracking'),

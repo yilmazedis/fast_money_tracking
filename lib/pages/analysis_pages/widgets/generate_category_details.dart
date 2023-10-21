@@ -44,6 +44,9 @@ class CategoryDetails extends StatelessWidget {
   const CategoryDetails({required this.type, required this.category, required this.amount, super.key});
   @override
   Widget build(BuildContext context) {
+
+    final mainColor = type == ItemType.income ? AppColor.green: AppColor.red;
+
     return Card(
         color: AppColor.white,
         elevation: 3,
@@ -56,9 +59,7 @@ class CategoryDetails extends StatelessWidget {
             children: [
               Icon(
                 categoryItems[category].data,
-                color : type == ItemType.income
-                    ? AppColor.green
-                    : AppColor.red,
+                color: mainColor,
                 size: 23,
               ),
               Expanded(
@@ -77,7 +78,7 @@ class CategoryDetails extends StatelessWidget {
                 flex: 0,
                 child: Text(
                   '${format(amount)} $currency',
-                  style: GoogleFonts.aBeeZee(fontSize: 20),
+                  style: GoogleFonts.aBeeZee(fontSize: 20, color: mainColor),
                   overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.end,
                 ),
@@ -85,9 +86,10 @@ class CategoryDetails extends StatelessWidget {
               const SizedBox(
                 width: 10,
               ),
-              const Icon(
+              Icon(
                 Icons.arrow_forward_ios,
                 size: 18,
+                color: mainColor,
               ),
             ],
           ),
