@@ -1,3 +1,4 @@
+import 'package:fast_money_tracking/controllers/user_controller.dart';
 import 'package:fast_money_tracking/pages/analysis_pages/widgets/show_date.dart';
 import 'package:fast_money_tracking/pages/analysis_pages/widgets/show_details.dart';
 import 'package:flutter/material.dart';
@@ -15,12 +16,14 @@ class AnalysisPage extends StatelessWidget {
 
   final dateStr = (getString(AppStorageKey.selectedDate) ?? "Today").obs;
   final ItemController controller = Get.find();
+  final UserController userController = Get.find();
 
   @override
   Widget build(BuildContext context) {
     ListView listViewChild(String type) {
       // Type From
       final RxString rxType = type.obs;
+      print(userController.user.value.name);
       return ListView(
         children: [
           ShowDate(selectedDate: dateStr),

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "96327565802",
+    "project_id": "fast-money-tracking",
+    "storage_bucket": "fast-money-tracking.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:96327565802:android:65fb7dfdeb27429ce13293",
+        "android_client_info": {
+          "package_name": "com.example.fast_money_tracking"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5uXjKTMp1bWf8Z-VAQouiwlsm4M86nAY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

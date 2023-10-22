@@ -1,27 +1,40 @@
 import 'package:fast_money_tracking/controllers/item_controller.dart';
+import 'package:fast_money_tracking/models/user.dart';
+import 'package:fast_money_tracking/pages/auth_pages/login_page.dart';
 import 'package:fast_money_tracking/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'controllers/user_controller.dart';
 import 'localization/app_localization.dart';
+import 'managers/firestore_controller.dart';
 import 'managers/sqflite_services.dart';
 
-void main() async {
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
 
-  final itemController = Get.put(ItemController());
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform).then((value) {
+    Get.put(ItemController());
+    Get.put(FirestoreController());
+    Get.put(UserController());
 
-  DB.init().then((_) {
-    DB.inputModelList().then((items) {
-      final ItemController controller = Get.find();
-      controller.addAll(items);
-      runApp(const MyApp());
+    DB.init().then((_) {
+      DB.inputModelList().then((items) {
+        final ItemController controller = Get.find();
+
+        final UserController userController = Get.find();
+        userController.user.value = User.getUser();
+
+        controller.addAll(items);
+        runApp(const MyApp());
+      });
     });
   });
-  //generateAndAddItems(itemController, 40);
 }
 
 class MyApp extends StatelessWidget {
@@ -36,7 +49,6 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
         useMaterial3: true,
       ),
-      //home: const HomePage(title: 'Fast Money Tracking'),
       localizationsDelegates: const [
         AppLocalization.delegate,
         GlobalMaterialLocalizations.delegate,
@@ -58,7 +70,7 @@ class MyApp extends StatelessWidget {
         Locale("vi", "VN"),
         Locale("zh", "CN"),
       ],
-      home: const HomePage(),
+      home: User.hasUser() ? const HomePage() : LoginPage(),
     );
   }
 }

@@ -25,7 +25,7 @@ class SaveButton extends StatelessWidget {
           ),
         ),
         label: Text(
-          getTranslated(context, 'Save')!,
+          getTranslated(context, 'Save'),
           style: const TextStyle(fontSize: 25),
         ),
         icon: const Icon(
@@ -94,4 +94,30 @@ class SaveAndDeleteButton extends StatelessWidget {
       ],
     );
   }
+}
+
+Widget appButton({String? title = "", required void Function()? onPressed, required Color backgroundColor, required Color textColor}) {
+  return Padding(
+    padding: const EdgeInsets.all(20),
+    child: IntrinsicHeight(
+      child: SizedBox.expand(
+        child: ElevatedButton(
+          onPressed: onPressed,
+          style: ElevatedButton.styleFrom(
+            shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+            backgroundColor: backgroundColor,
+            //padding: const EdgeInsets.symmetric(vertical: 20),
+            //padding: EdgeInsets.only(
+            //     left: 120, right: 120, top: 20, bottom: 20),
+          ),
+          child: Text(
+            title!,
+            style: TextStyle(
+                fontSize: 16, color: textColor, fontWeight: FontWeight.w400),
+          ),
+        ),
+      ),
+    ),
+  );
 }

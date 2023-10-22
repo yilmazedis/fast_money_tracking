@@ -1,4 +1,5 @@
 import 'package:fast_money_tracking/pages/calendar_pages/calendar_page.dart';
+import 'package:fast_money_tracking/pages/settings_pages/settings_page.dart';
 import 'package:flutter/material.dart';
 import '../localization/methods.dart';
 import '../utils/constants.dart';
@@ -23,6 +24,7 @@ class _HomePageState extends State<HomePage> {
   List<Widget> myBody = [
     AnalysisPage(),
     CalendarPage(),
+    SettingsPage(),
   ];
 
   BottomNavigationBarItem bottomNavigationBarItem(
@@ -42,6 +44,7 @@ class _HomePageState extends State<HomePage> {
     List<BottomNavigationBarItem> bottomItems = <BottomNavigationBarItem>[
       bottomNavigationBarItem(context, Icons.analytics_outlined, 'Analysis'),
       bottomNavigationBarItem(context, Icons.calendar_today, 'Calendar'),
+      bottomNavigationBarItem(context, Icons.settings, 'Settings'),
     ];
 
     return Scaffold(
