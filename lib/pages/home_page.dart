@@ -1,7 +1,12 @@
+import 'package:fast_money_tracking/controllers/item_controller.dart';
+import 'package:fast_money_tracking/controllers/user_controller.dart';
 import 'package:fast_money_tracking/pages/calendar_pages/calendar_page.dart';
 import 'package:fast_money_tracking/pages/settings_pages/settings_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../localization/methods.dart';
+import '../managers/firestore_controller.dart';
+import '../models/user.dart';
 import '../utils/constants.dart';
 import 'analysis_pages/analysis_page.dart';
 
@@ -26,6 +31,36 @@ class _HomePageState extends State<HomePage> {
     CalendarPage(),
     SettingsPage(),
   ];
+
+  void setFirebaseItems() {
+    final UserController userController = Get.find();
+    final ItemController itemController = Get.find();
+
+    userController.user.value = User.getUser();
+    FirestoreController.instance.enablePersistent();
+    FirestoreController.instance.itemListener(onAdd: (items) {
+      for (var item in items) {
+        itemController.add(item);
+      }
+    },
+        onRemove: (id) {
+          for (var id in id) {
+            itemController.deleteById(id);
+          }
+        },
+        onUpdate: (items) {
+          for (var item in items) {
+            itemController.edit(item);
+          }
+        },
+        companyId: userController.user.value.companyId);
+  }
+
+  @override
+  void initState() {
+    setFirebaseItems();
+    super.initState();
+  }
 
   BottomNavigationBarItem bottomNavigationBarItem(
       BuildContext context, IconData iconData, String label) =>

@@ -4,6 +4,7 @@ import '../models/item.dart';
 
 class ItemController extends GetxController {
   final _items = Rx<List<Item>>([]);
+  final _itemsIds = Rx<List<String>>([]);
 
   Rx<List<Item>> get items => _items;
 

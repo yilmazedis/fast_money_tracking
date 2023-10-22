@@ -87,9 +87,10 @@ class _CalendarBodyState extends State<CalendarBody> {
         void updateMapValue<K, V>(Map<K, List<V>> map, K key, V value) => map
             .update(key, (list) => list..add(value), ifAbsent: () => [value]);
 
+        // TODO: be careful
         updateMapValue(
           map,
-          items[i].date.split(" ").first,
+          DateFormat('dd-MM-yyyy').format(items[i].date),
           map1,
         );
       }

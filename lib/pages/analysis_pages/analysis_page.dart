@@ -1,4 +1,5 @@
 import 'package:fast_money_tracking/controllers/user_controller.dart';
+import 'package:fast_money_tracking/managers/firestore_controller.dart';
 import 'package:fast_money_tracking/pages/analysis_pages/widgets/show_date.dart';
 import 'package:fast_money_tracking/pages/analysis_pages/widgets/show_details.dart';
 import 'package:flutter/material.dart';
@@ -48,8 +49,11 @@ class AnalysisPage extends StatelessWidget {
               Get.to(() => AddInput(), arguments: {"state": "Add", "index": -1})
                   ?.then((result) {
                 if (result != null && result['item'] != null) {
-                  DB.insert(result['item']);
-                  controller.add(result['item']);
+                  // TODO: be careful
+                  //DB.insert(result['item']);
+                  final companyId = userController.user.value.companyId;
+                  FirestoreController.instance.addItem(result['item'].toMap(), companyId);
+                  //controller.add(result['item']);
                 }
               });
             },

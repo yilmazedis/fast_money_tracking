@@ -1,5 +1,6 @@
 
 
+import 'package:fast_money_tracking/controllers/user_controller.dart';
 import 'package:fast_money_tracking/pages/auth_pages/login_page.dart';
 import 'package:fast_money_tracking/pages/settings_pages/select_language_page.dart';
 import 'package:fast_money_tracking/utils/constants.dart';
@@ -9,12 +10,15 @@ import 'dart:core';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../localization/methods.dart';
 import '../../models/user.dart';
 
 class SettingsPage extends StatelessWidget {
-  const SettingsPage({super.key});
+  SettingsPage({super.key});
+
+  final UserController userController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -45,9 +49,13 @@ class SettingsPage extends StatelessWidget {
                 SizedBox(
                   width: 20,
                 ),
-                Text(
-                  '${getTranslated(context, 'Hi you')}!',
-                  style: const TextStyle(fontSize: 30),
+                Expanded(
+                  child: Text(
+                    userController.user.value.name,
+                    style: GoogleFonts.aBeeZee(fontSize: 30),
+                    overflow: TextOverflow.fade,
+                    textAlign: TextAlign.start,
+                  ),
                 ),
                 // Spacer(),
                 // Icon(

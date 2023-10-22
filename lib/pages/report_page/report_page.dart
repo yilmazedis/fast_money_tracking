@@ -1,8 +1,10 @@
+import 'package:fast_money_tracking/managers/firestore_controller.dart';
 import 'package:fast_money_tracking/pages/add_edit_pages/edit_page.dart';
 import 'package:fast_money_tracking/pages/report_page/widgets/item_details.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../controllers/item_controller.dart';
+import '../../controllers/user_controller.dart';
 import '../../localization/methods.dart';
 import '../../managers/sqflite_services.dart';
 import '../../models/item.dart';
@@ -14,6 +16,7 @@ class ReportPage extends StatelessWidget {
 
   ReportPage({required this.items, Key? key}) : super(key: key);
   final ItemController controller = Get.find();
+  final UserController userController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -36,12 +39,18 @@ class ReportPage extends StatelessWidget {
                         }
 
                         if (result['item'] != null) {
-                          controller.edit(result['item']);
-                          DB.update(result['item']);
+                          final companyId = userController.user.value.companyId;
+                          FirestoreController.instance.updateItem(result['item'].toMap(), companyId);
+
+                          // controller.edit(result['item']);
+                          // DB.update(result['item']);
                         } else {
-                          print("Deleted Item");
-                          DB.delete(item.id);
-                          controller.deleteById(item.id);
+                          final companyId = userController.user.value.companyId;
+                          FirestoreController.instance.deleteItem(item.id, companyId);
+
+                          // print("Deleted Item");
+                          // DB.delete(item.id);
+                          // controller.deleteById(item.id);
                         }
                         Get.back();
                       });

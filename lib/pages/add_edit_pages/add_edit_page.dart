@@ -40,7 +40,7 @@ class AddEditPage extends StatelessWidget {
       amountTextController.text = item.amount.toString();
       categoryItemIndex.value = item.category;
       descriptionTextController.text = item.description;
-      dateTime.value = dateTimeFormat.parse(item.date);
+      dateTime.value = item.date;
       selectedTime.value = TimeOfDay.fromDateTime(dateTime.value);
     }
   }
@@ -56,8 +56,7 @@ class AddEditPage extends StatelessWidget {
         amount: double.tryParse(amountTextController.text) ?? 0,
         category: categoryItemIndex.value,
         description: descriptionTextController.text,
-        date: dateTime.value.addTimeOfDay(timeOfDay: selectedTime.value)
-            .dateFormatWithTime());
+        date: dateTime.value.addTimeOfDay(timeOfDay: selectedTime.value));
     Get.back(result: {
       'item': item,
     });

@@ -1,6 +1,7 @@
+import 'dart:convert';
 import 'dart:math';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fast_money_tracking/utils/extensions/string_ext.dart';
-import 'package:intl/intl.dart';
 import '../controllers/item_controller.dart';
 import '../utils/constants.dart';
 
@@ -10,7 +11,7 @@ class Item {
   double amount;
   int category;
   String description;
-  String date;
+  DateTime date;
 
   Item(
       {required this.id,
@@ -33,25 +34,28 @@ class Item {
     return map;
   }
 
-  static Item fromMap(Map<String, dynamic> map) {
+  static Item fromMap(Map<String, dynamic> map, String itemId) {
     return Item(
-      id: map['id'],
+      id: itemId,
       type: map['type'],
       amount: map['amount'],
       category: map['category'],
       description: map['description'],
-      date: map['date'],
+      date: (map["date"] as Timestamp).toDate(),
     );
   }
 }
 
+Item itemModelFromMap(Map<String, dynamic> map, String itemId) => Item.fromMap(map, itemId);
+Item itemModelModelFromJson(String str, String itemId) => Item.fromMap(json.decode(str), itemId);
+String itemModelModelToJson(Item data) => json.encode(data.toMap());
+
 List<Item> getItemsBetweenDates(List<Item> items, DateTime startDate, DateTime endDate) {
 
   List<Item> newItems = [];
-  DateFormat customFormat = DateFormat("dd-MM-yyyy HH:mm");
-
+  // DateFormat customFormat = DateFormat("dd-MM-yyyy HH:mm");
   for (var item in items) {
-    DateTime itemDate = customFormat.parse(item.date); // Assuming 'date' is a valid date string in your Item class
+    DateTime itemDate = item.date;
     if (itemDate.isAfter(startDate) &&
         itemDate.isBefore(endDate.add(const Duration(days: 1)))) {
       newItems.add(item);
@@ -112,7 +116,7 @@ void generateAndAddItems(ItemController itemController, int itemCount) {
       amount: Random().nextDouble() * 100,
       category: Random().nextInt(9) + 1,
       description: "Item $i Description",
-      date: "12-10-2023 11:11"
+      date: DateTime(2023, 9, 7, 17, 30), // update if needed
       //date: generateRandomDate()
     );
     items.add(item);

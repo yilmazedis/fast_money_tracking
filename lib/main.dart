@@ -9,7 +9,6 @@ import 'package:get_storage/get_storage.dart';
 import 'controllers/user_controller.dart';
 import 'localization/app_localization.dart';
 import 'managers/firestore_controller.dart';
-import 'managers/sqflite_services.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -19,21 +18,30 @@ void main() async {
   await GetStorage.init();
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform).then((value) {
-    Get.put(ItemController());
+
     Get.put(FirestoreController());
+    Get.put(ItemController());
     Get.put(UserController());
 
-    DB.init().then((_) {
-      DB.inputModelList().then((items) {
-        final ItemController controller = Get.find();
+    // FirestoreController.instance.itemListener(callback: (items) {
+    //   print(items);
+    //   itemController.addAll(items);
+    //   runApp(const MyApp());
+    // }, companyId: userController.user.value.companyId);
 
-        final UserController userController = Get.find();
-        userController.user.value = User.getUser();
+    // DB.init().then((_) {
+    //   DB.inputModelList().then((items) {
+    //     final ItemController controller = Get.find();
+    //
+    //     final UserController userController = Get.find();
+    //     userController.user.value = User.getUser();
+    //
+    //     controller.addAll(items);
+    //     runApp(const MyApp());
+    //   });
+    // });
 
-        controller.addAll(items);
-        runApp(const MyApp());
-      });
-    });
+    runApp(const MyApp());
   });
 }
 

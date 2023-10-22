@@ -1,5 +1,7 @@
+import 'package:fast_money_tracking/utils/extensions/date_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 
 import '../../../localization/methods.dart';
 import '../../../models/item.dart';
@@ -33,7 +35,7 @@ class ItemDetails extends StatelessWidget {
                 iconData: Icons.calendar_month,
                 type: item.type,
                 iconText: getTranslated(context, 'Date'),
-                text: item.date,
+                text: DateFormat('dd/MM/yyyy').format(item.date),
               ),
               const SizedBox(
                 height: 10,
