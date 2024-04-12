@@ -1,5 +1,13 @@
 # fast_money_tracking
 
+Boss
+id: 1dKgtRgmolxRzLKug9WG
+psw: 123456789
+
+Worker
+id: sYCVXPW3aWVBopTNC9NI
+psw: 1234567
+
 ## Brief Show Case
 
 |   Page 1              |   Page 2         |   Page 3           |   Page 4            |
