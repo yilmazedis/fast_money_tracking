@@ -1,12 +1,12 @@
 # fast_money_tracking
 
 Boss
-id: 1dKgtRgmolxRzLKug9WG
-psw: 123456789
+- id: 1dKgtRgmolxRzLKug9WG
+- psw: 123456789
 
 Worker
-id: sYCVXPW3aWVBopTNC9NI
-psw: 1234567
+- id: sYCVXPW3aWVBopTNC9NI
+- psw: 1234567
 
 ## Brief Show Case
 
