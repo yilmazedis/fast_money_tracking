@@ -1,16 +1,7 @@
 # fast_money_tracking
 
-A new Flutter project.
+## Brief Show Case
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+|   Page 1              |   Page 2         |   Page 3           |   Page 4            |
+|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|
+<img src=https://github.com/yilmazedis/fast_money_tracking/assets/15719990/06a56562-e36a-45a7-b675-ff6bc8451092 width="214" height="463"> | <img src=https://github.com/yilmazedis/fast_money_tracking/assets/15719990/b273bde4-eb3f-4409-a1eb-e31fc0324f68 width="214" height="463"> | <img src=https://github.com/yilmazedis/fast_money_tracking/assets/15719990/6d7d0785-41eb-471d-ad85-eb0273702e91 width="214" height="463"> | <img src=https://github.com/yilmazedis/fast_money_tracking/assets/15719990/64692da0-7e98-44fc-babe-f7e39a601b26 width="214" height="463"> |
